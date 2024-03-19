@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServicePlanSku": {
+      "value": {
+        "name": "F1",
+        "tier": "Free"
+      }
+    },
+    "sqlDatabaseSku": {
+      "value": {
+        "name": "Standard",
+        "tier": "Standard"
+      }
+    },
+    "sqlServerAdministratorLogin": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/1b9fe108-b941-495b-aaf6-539c16640cc3/resourceGroups/learn-ced71425-84c8-434b-9be3-ae6e0bc69b07/providers/Microsoft.KeyVault/vaults/dobromiros-vault-2"
+        },
+        "secretName": "sqlServerAdministratorLogin"
+      }
+    },
+    "sqlServerAdministratorPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/1b9fe108-b941-495b-aaf6-539c16640cc3/resourceGroups/learn-ced71425-84c8-434b-9be3-ae6e0bc69b07/providers/Microsoft.KeyVault/vaults/dobromiros-vault-2"
+        },
+        "secretName": "sqlServerAdministratorPassword"
+      }
+    }
+  }
+}
