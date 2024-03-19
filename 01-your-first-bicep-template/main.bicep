@@ -1,4 +1,4 @@
-param location string = 'northeurope'
+param location string = 'northeurope' // todo: use resourceGroup().location
 param storageAccountName string = 'toylaunch${uniqueString(resourceGroup().id)}'
 param appServiceAppName string = 'toylaunch${uniqueString(resourceGroup().id)}'
 
