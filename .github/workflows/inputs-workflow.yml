@@ -27,4 +27,6 @@ jobs:
       - name: Set environment
         run: echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
       - name: Set resource group based on environment
-        run: echo "RESOURCE_GROUP=${{ github.event.inputs.environment }}-rg" >> $GITHUB_ENV
+        run: echo "RESOURCE_GROUP=rg-Device_Integration_Suite-${{ github.event.inputs.environment }}-02" >> $GITHUB_ENV
+      - name: Show resource group
+        run: echo $RESOURCE_GROUP
