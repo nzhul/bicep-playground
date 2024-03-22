@@ -6,9 +6,9 @@ on:
       name:
         type: choice
         description: Who to greet
-        options: 
-        - monalisa
-        - cschleiden
+        options:
+          - monalisa
+          - cschleiden
       message:
         required: true
       use-emoji:
@@ -22,5 +22,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+      - name: Send greeting
+        run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+      - name: Set environment
+        run: echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
+      - name: Set resource group based on environment
+        run: echo "RESOURCE_GROUP=${{ github.event.inputs.environment }}-rg" >> $GITHUB_ENV
