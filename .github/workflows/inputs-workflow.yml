@@ -1,4 +1,4 @@
-name: Mixed inputs
+name: Inputs
 
 on:
   workflow_dispatch:
@@ -30,3 +30,15 @@ jobs:
         run: echo "RESOURCE_GROUP=rg-Device_Integration_Suite-${{ github.event.inputs.environment }}-02" >> $GITHUB_ENV
       - name: Show resource group
         run: echo $RESOURCE_GROUP
+      - name: Set subscription ID
+        run: |
+          SUB_MAP=$(cat << END
+          {
+            "Dev": "11111111-1111-1111-1111-111111111111",
+            "Prod": "22222222-2222-2222-2222-222222222222"
+          }
+          END
+          )
+          SUBSCRIPTION_ID=$(echo $SUB_MAP | jq -r 'to_entries[] | select(.key == "${{ github.event.inputs.environment}} | .value')')
+      - name: Show Subscription ID
+        run: echo $SUBSCRIPTION_ID
