@@ -17,6 +17,10 @@ on:
       environment:
         type: environment
 
+env:
+  ENVIRONMENT: ${{ github.event.inputs.environment }}
+  AZURE_RESOURCEGROUP_NAME: rg-Device_Integration_Suite-${{ github.event.inputs.environment }}-02
+
 jobs:
   greet:
     runs-on: ubuntu-latest
