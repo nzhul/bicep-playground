@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Use a secret
-        run: echo ${{ env.REPO_VAR }}
+        run: echo ${{ vars.REPO_VAR }}
       - name: Send greeting
         run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
       - name: Set environment
