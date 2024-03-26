@@ -20,10 +20,10 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
-
+    environment: ${{ github.event.inputs.environment }}
     steps:
-      - name: Use a secret
-        run: echo ${{ vars.REPO_VAR }}
+      - name: PRINT SUB_ID
+        run: echo ${{ vars.SUB_ID }}
       - name: Send greeting
         run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
       - name: Set environment
